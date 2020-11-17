@@ -1,0 +1,198 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+* {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+/*-------------------------*/
+body {
+	overflow-x: hidden;
+}
+main > div{
+	padding: 5% 10%;
+}
+p, h1{
+	font-family: Lato;
+}
+h1{
+	font-size: 22px;
+}
+textarea:focus, input:focus{
+	outline: none;
+}
+body{
+	position: relative;
+}
+/*buttons*/
+.buttons{
+	height: 80px;
+}
+.customBtn {
+	margin: 20px;
+	padding: 8px 20px;
+	background: transparent;
+	outline: none !important;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	position: relative;
+	display: inline-block;
+	border: 2px solid #000;
+	font-size: 14px;
+	font-weight: 600;
+}
+.customBtn:first-child {
+	margin-left: 0;
+}
+.customBtn:after {
+	position: absolute;
+	content: "";
+	width: 0;
+	height: 100%;
+	top: 0;
+	right: 0;
+	z-index: -1;
+	background: #d24d57;
+	transition: all 0.3s ease;
+}
+.customBtn:hover {
+	color: #fff;
+	border: 2px solid #d24d57;
+	border-radius: 5px;
+}
+.customBtn:hover:after {
+	left: 0;
+	width: 100%;
+}
+.customBtn:active {
+	top: 2px;
+}
+.customBtn.active {
+	border: 2.5px solid #d24d57;
+	padding: 10px 25px;
+}
+
+
+/* The list */
+main{
+	min-height: 95vh;
+}
+table{
+	border-collapse: collapse;
+	border-radius: 0.5em;
+	overflow: hidden;
+	margin: 30px 0;
+	width: 80vw;
+}
+table th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: #d24d57;
+	color: white;
+	font-family: Lato;
+	font-size: 18px;
+	cursor: pointer;
+}
+table td{
+	font-family: Helvetica Neue;
+}
+table tr td:nth-child(n+2) {
+	padding-right: 50px;
+}
+table td p{
+	width: 85px;
+	display: inline-block;
+}
+table td span{
+	margin-left: 2vw;
+	font-size: 14px;
+}
+table td, table th {
+	padding: 8px;
+	width: 1%;
+	vertical-align: middle;
+}
+table tr{
+	transition: .3s;
+	background-color: #fff;
+}
+table tr:nth-child(odd){background-color: #f2f2f2;}
+table tr:hover {background-color: #ddd;}
+
+@media screen and (max-width: 1100px) {
+	h1{
+		font-size: 16px;
+	}
+	main > div {
+		padding: 5% 6%;
+	}
+	table{
+		width: auto;
+	}
+	table th {
+		font-size: 14px;
+	}
+	table td {
+		font-size: 14px;
+	}
+	table tr td:nth-child(n+2) {
+		padding-right: 0;
+	}
+}
+@media screen and (max-width: 900px) {
+	table td p {
+		width: auto;
+	}
+	table td span {
+		font-size: 10px;
+	}
+}
+@media screen and (max-width: 660px) {
+	.buttons{
+		margin-top: 20px;
+	}
+	.customBtn {
+		margin: 4px;
+		padding: 5px 8px;
+		font-size: 10px;
+	}
+	.customBtn.active{
+		padding: 6px 9px;
+	}
+
+	table th {
+		font-size: 11px;
+	}
+	table td {
+		font-size: 11px;
+	}
+	main > div {
+		padding: 5% 3%;
+	}
+}
+@media screen and (max-width: 499px) {
+	table td, table th {
+		padding: 4px;
+	}
+	table td span {
+		display: block;
+	}
+}

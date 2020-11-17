@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>List</title>
+	<!--font familys-->
+	<link href='https://fonts.googleapis.com/css?family=Lato&display=swap' rel='stylesheet'>
+	<link href='https://fonts.googleapis.com/css?family=Helvetica+Neue' rel='stylesheet'>
+	<!--icon-->
+	<script src="https://kit.fontawesome.com/a076d05399.js" defer></script>
+	<!--files-->
+	<link rel="stylesheet" type="text/css" href="style_country.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<!--sort table-->
+	<script src="sort-table.js"></script>
+</head>
+<body>
+	<main>
+		<div id="app">
+			<div v-if="countryList!=null">
+				<h1>{{countryList[0].Country}} daily</h1>
+			</div>
+			<div class="buttons">
+				<button v-on:click="currentValue(' 7')" id="button1" class="customBtn active">7 day</button>
+				<button v-on:click="currentValue('14')" id="button2" class="customBtn">14 day</button>
+				<button v-on:click="currentValue('28')" id="button3" class="customBtn">1 month</button>
+			</div>
+			
+			<!--List the countries date-->
+			<table class="js-sort-table" id="demo1">
+				<tr>
+					<th>Time</th>
+					<th class="js-sort-number">Confirmed</th>
+					<th class="js-sort-number">Deaths</th>
+					<th class="js-sort-number">Recovered</th>
+					<th class="js-sort-number">Active</th>
+				</tr>
+				<tr v-for="name in countryList">
+					<td>{{ formatTime(name.Date) }}</td>
+					<td>
+						<p>{{ formatNum(name.Confirmed) }}</p>
+						<span v-if="name.newConfirmed!=0">{{" +"+formatNum(name.newConfirmed)}}</span>
+					</td>
+					<td>
+						<p>{{ formatNum(name.Deaths) }}</p>
+						<span v-if="name.newDeaths!=0">{{" +"+formatNum(name.newDeaths)}}</span>
+					</td>
+					<td>
+						<p>{{ formatNum(name.Recovered) }}</p>
+						<span v-if="name.newRecovered!=0">{{" +"+formatNum(name.newRecovered)}}</span>
+					</td>
+					<td>{{ formatNum(name.Active) }}</td>
+				</tr>
+			</table>
+			<!--<div id="app">
+			  <div v-for="countryName in countryList">
+			  	{{ countryName.Country }}
+			  </div>
+			  
+			</div>-->
+		</div>
+	</main>
+
+
+	<script type="text/javascript" src="vueCountryTable.js"></script>
+</body>
+</html>

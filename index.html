@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>List</title>
+	<!--font familys-->
+	<link href='https://fonts.googleapis.com/css?family=Lato&display=swap' rel='stylesheet'>
+	<link href='https://fonts.googleapis.com/css?family=Helvetica+Neue' rel='stylesheet'>
+	<!--icon-->
+	<script src="https://kit.fontawesome.com/a076d05399.js" defer></script>
+	<!--files-->
+	<link rel="stylesheet" type="text/css" href="files/style_list.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<!--sort table-->
+	<script src="files/sort-table.js"></script>
+</head>
+<body onload="loadPage()">
+	<header>
+		<div>
+			<div id="app2" class="globalData" v-if="globalData!=null">
+				<h1>Global data</h1>
+				<p>Confirmed: <span style="color:#f30">{{ formatNum(globalData.TotalConfirmed) }}</span></p>
+				<p>Daily confirmed: <span style="color:#ebcc00">{{ formatNum(globalData.NewConfirmed) }}</span></p>
+				<p>Deaths: <span style="color:#f30">{{ formatNum(globalData.TotalDeaths) }}</span></p>
+				<p>Recovered: <span style="color:green">{{ formatNum(globalData.TotalRecovered) }}</span></p>
+			</div>
+			
+			<div class="scroll">
+				<i class="fas fa-arrow-down fa-2x" id="arrowLoad" onclick='window.scrollTo({top: 500, behavior: "smooth"});'></i>
+			</div>
+		</div>
+	</header>
+	<main>
+		<div>
+			<h1>List</h1>
+			<!--search your Country-->
+			<div class="countryInput">
+				<input type="text" id="searchCountry" onkeyup="searchFunction()" placeholder="Search for your Country..">
+			</div>
+			<!--List the countries date-->
+			<table id="app" class="js-sort-table" id="demo1">
+				<tr>
+					<th>Country</th>
+					<th class="js-sort-number newColumn">New Confirmed</th>
+					<th class="js-sort-number">Total Confirmed</th>
+					<th class="js-sort-number newColumn">New Deaths</th>
+					<th class="js-sort-number">Total Deaths</th>
+					<th class="js-sort-number newColumn">New Recovered</th>
+					<th class="js-sort-number">Total Recovered</th>
+				</tr>
+				<tr v-for="countryName in countryList">
+					<td>
+						<a :href="'files/countryTable.html?c=' +countryName.Country">{{ countryName.Country }}</a>
+					</td>
+					<td class="newColumn">{{ formatNum(countryName.NewConfirmed) }}</td>
+					<td>{{ formatNum(countryName.TotalConfirmed) }}</td>
+					<td class="newColumn">{{ formatNum(countryName.NewDeaths) }}</td>
+					<td>{{ formatNum(countryName.TotalDeaths) }}</td>
+					<td class="newColumn">{{ formatNum(countryName.NewRecovered) }}</td>
+					<td>{{ formatNum(countryName.TotalRecovered) }}</td>
+				</tr>
+							
+			</table>
+			<!--<div id="app">
+			  <div v-for="countryName in countryList">
+			  	{{ countryName }}
+			  </div>
+			  
+			</div>-->
+		</div>
+		<div class="scrollTop">
+			<i class="fas fa-arrow-down fa-3x" onclick='window.scrollTo({top: 0, behavior: "smooth"});'></i>
+		</div>
+	</main>
+
+
+	<script type="text/javascript" src="files/vueIndex.js"></script>
+</body>
+</html>
